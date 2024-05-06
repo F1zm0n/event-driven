@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  auth-pg:
+    image: 'postgres:latest'
+    restart: always  
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: auth    
+      POSTGRES_PASSWORD: password
+  broker:
+    image: rabbitmq:latest
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=password
+    ports:
+      - 15672:15672
+      - 5672:5672  
+  

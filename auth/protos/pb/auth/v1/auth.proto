@@ -1,0 +1,39 @@
+syntax="proto3";
+
+package authv1;
+
+option go_package="github.com/F1zm0n/event-pb-authv1";
+
+service AuthService {
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc CustomerByID (UserByIDRequest) returns (UserByIDResponse);
+  rpc CustomerByEmail (UserByEmailRequest) returns (UserByEmailResponse);
+}
+
+message LoginRequest {
+  string customer_id = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message LoginResponse {
+  string token = 1;
+}
+
+message UserByIDRequest {
+  string customer_id = 1;
+}
+
+message UserByIDResponse{
+  string customer_id = 1;
+  string email = 2;
+}
+
+message UserByEmailRequest{
+  string email = 1;
+}
+
+message UserByEmailResponse{
+  string customer_id = 1;
+  string email = 2;
+}
