@@ -1,0 +1,23 @@
+syntax="proto3";
+
+package inventoryv1;
+
+option go_package="github.com/F1zm0n/event-pb-inventoryv1";
+
+service InventoryService {
+  rpc GetByID (GetByIDRequest) returns (GetByIDResponse);
+}
+
+message GetByIDRequest {
+  string inventory_id=1;
+}
+
+message GetByIDResponse{
+  string inventory_id=1;
+  string product_name=2;
+  int32  product_count=3;
+  float  base_price=4;
+  float  sale_price=5;
+}
+
+
